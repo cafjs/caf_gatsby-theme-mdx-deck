@@ -1,3 +1,6 @@
+Changes to `jxnblk/mdx-deck/packages/gatsby-theme` to support Caf.js integration
+
+
 
 # gatsby-theme-mdx-deck
 

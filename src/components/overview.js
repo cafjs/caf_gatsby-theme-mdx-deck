@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { navigate } from '@reach/router'
+import { jump } from '../navigate'
 import useDeck from '../hooks/use-deck'
 import Zoom from './zoom'
 import SlideList from './slide-list'
@@ -31,7 +31,7 @@ export default ({ slides, children }) => {
           slides={slides}
           zoom={1 / 6}
           onClick={i => {
-            navigate([slug, i].join('/'))
+            jump(slug, index, i)
           }}
         />
       </div>

@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { navigate } from '@reach/router'
+import { jump } from '../navigate'
 import useDeck from '../hooks/use-deck'
 import { modes } from '../constants'
 import SlideList from './slide-list'
 
 export default ({ slides }) => {
-  const { slug, setState } = useDeck()
+    const { slug, index, setState } = useDeck()
   return (
     <div
       sx={{
@@ -22,8 +22,8 @@ export default ({ slides }) => {
         <SlideList
           slides={slides}
           onClick={i => {
-            navigate([slug, i].join('/'))
-            setState({ mode: modes.normal })
+              jump(slug, index, i)
+              setState({ mode: modes.normal })
           }}
           sx={{
             width: '25%',

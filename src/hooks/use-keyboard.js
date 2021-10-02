@@ -86,8 +86,26 @@ export const useKeyboard = () => {
 
     window.addEventListener('keydown', handleKeyDown)
 
+      const handleSimKeyDown = (e) => {
+        // TODO: check e.origin
+        const {action} = e.data;
+        switch (action) {
+        case 'increment':
+            handleKeyDown({keyCode: keys.right});
+            break;
+        case 'decrement':
+            handleKeyDown({keyCode: keys.left});
+            break;
+        default:
+            console.log(`Ignoring command ${action}`);
+        }
+    };
+
+    window.addEventListener('message', handleSimKeyDown);
+
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
+        window.removeEventListener('keydown', handleKeyDown)
+        window.removeEventListener('message', handleSimKeyDown);
     }
   }, [context])
 }
