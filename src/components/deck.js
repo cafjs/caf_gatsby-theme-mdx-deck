@@ -8,6 +8,7 @@ import merge from 'lodash.merge'
 import useKeyboard from '../hooks/use-keyboard'
 import useStorage from '../hooks/use-storage'
 import useDeck from '../hooks/use-deck'
+import useInitialPage from '../hooks/use-initial-page'
 import Context from '../context'
 import Wrapper from './wrapper'
 import Slide from './slide'
@@ -16,6 +17,11 @@ import { modes } from '../constants'
 import Presenter from './presenter'
 import Overview from './overview'
 import Grid from './grid'
+
+const InitialPage = () => {
+    useInitialPage();
+    return false;
+}
 
 const Keyboard = () => {
   useKeyboard()
@@ -125,6 +131,7 @@ export default ({
               },
             }}
           />
+          <InitialPage />
           <Keyboard />
           <Storage />
           <Wrapper>
